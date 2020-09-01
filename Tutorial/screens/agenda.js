@@ -39,8 +39,6 @@ export default class AgendaScreen extends Component {
   setmodalstate(visible) {
     const { modalVisible } = this.state;
     this.setState({ modalVisible: visible });
-    // console.log(modalVisible);
-    // this.showmodal();
   }
 
   updatecontent(content, id) {

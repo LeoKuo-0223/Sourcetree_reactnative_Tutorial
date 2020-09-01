@@ -12,6 +12,8 @@ target 'Tutorial' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'TutorialTests' do
     inherit! :complete
     # Pods for testing
