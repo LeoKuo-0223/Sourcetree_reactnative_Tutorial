@@ -14,6 +14,7 @@ import Yoga from '../screens/yoga'
 import Healthcontents from '../screens/healthcontents'
 import Information from '../screens/information'
 import Missioncontents from '../screens/missioncontents';
+import Recipe from '../screens/recipe'
 
 // const AppNavigator = {
 //     首頁: {
@@ -46,6 +47,7 @@ export default class MyStack extends React.Component {
                 <Navigatior.Screen name="孕婦瑜珈" component={Yoga} />
                 <Navigatior.Screen name="爸爸的叮嚀" component={Healthcontents} />
                 <Navigatior.Screen name="任務內容" component={Missioncontents} />
+                <Navigatior.Screen name="烹飪教室" component={Recipe} />
             </Navigatior.Navigator>
         )
     }

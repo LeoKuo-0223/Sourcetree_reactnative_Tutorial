@@ -123,10 +123,7 @@ export default class Home extends React.Component {
     )
 
 
-    scrollToIndex = () => {
-        let randomIndex = Math.floor(Math.random(Date.now()) * this.state.apidata.length);
-        this.state.apidata.scrollToIndex({ animated: true, index: 3 });
-    }
+
 
     render() {
         return (
@@ -158,7 +155,11 @@ export default class Home extends React.Component {
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={{ flex: 1, justifyContent: 'space-around', paddingRight: 50 }}>
+                            <View style={{
+                                flex: 1, justifyContent: 'space-around', paddingRight: 50,
+                                backgroundColor: 'rgba(255,255,255,0.7)', borderBottomLeftRadius: 60,
+                                marginLeft: 20, marginBottom: 10
+                            }}>
                                 <Text style={styles.title}>爸爸の任務</Text>
                             </View>
                         </View>
@@ -197,7 +198,7 @@ export default class Home extends React.Component {
 
                                                 <View style={{
                                                     backgroundColor: "white", borderRadius: 10,
-                                                    padding: 25, paddingVertical: 10,marginHorizontal:16,
+                                                    padding: 25, paddingVertical: 10, marginHorizontal: 16,
                                                     alignContent: 'center', justifyContent: 'center'
                                                 }}>
                                                     <Text style={{
@@ -216,35 +217,7 @@ export default class Home extends React.Component {
                         </View>
                     </View>
                     <View style={{ flex: 0.5, marginTop: 20 }}>
-                        {/* <View style={{
-                            flex: 0.1,
-                            justifyContent: 'center', marginBottom: 20
-                        }}>
-                            <TouchableOpacity
-                                onPress={() =>
-                                    this.props.navigation.navigate('推薦任務')}
-                            >
-                                <View style={{
-                                    flexDirection: 'row', alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}>
-                                    <View>
-                                        <Icon
-                                            name='bell-ring'
-                                            type='material-community'
-                                            color='red'
-                                        // onPress={() => console.log('hello')}
-                                        />
-                                    </View>
-                                    <View>
-                                        <Text style={{
-                                            fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline',
-                                            textDecorationColor: 'black',
-                                        }}> 本週任務 </Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                        </View> */}
+
 
                         <View style={{ flex: 1 }}>
 
@@ -264,12 +237,15 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
-                                        <Text style={{ fontSize: 18, fontWeight: '500' }}>爸爸的任務</Text>
+                                    <View style={{
+                                        alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)',
+                                        borderRadius: 20, marginTop: 5
+                                    }}>
+                                        <Text style={{ fontSize: 18, fontWeight: '500', }}>{'爸爸的任務'}</Text>
                                     </View>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate('烹飪小教室')}
+                                    onPress={() => this.props.navigation.navigate('烹飪教室')}
                                 >
                                     <View style={{
                                         borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.7)',
@@ -283,7 +259,7 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
+                                    <View style={{ alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20, marginTop: 5 }}>
                                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{'烹飪教室'}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -302,7 +278,7 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
+                                    <View style={{ alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20, marginTop: 5 }}>
                                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{'婦幼展覽'}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -312,7 +288,7 @@ export default class Home extends React.Component {
                                 marginTop: 15
                             }}>
                                 <TouchableOpacity
-                                    onPress={() => this.props.navigation.navigate('烹飪小教室')}
+                                    onPress={() => this.props.navigation.navigate('孕婦瑜珈')}
                                 >
                                     <View style={{
                                         borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.7)',
@@ -326,7 +302,7 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
+                                    <View style={{ alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20, marginTop: 5 }}>
                                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{'孕婦瑜珈'}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -345,7 +321,7 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
+                                    <View style={{ alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20, marginTop: 5 }}>
                                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{'共編行事曆'}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -364,7 +340,7 @@ export default class Home extends React.Component {
                                         // onPress={() => console.log('hello')}
                                         />
                                     </View>
-                                    <View style={{ alignItems: 'center',backgroundColor:'rgba(255,255,255,0.7)',borderRadius:20,marginTop:5 }}>
+                                    <View style={{ alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20, marginTop: 5 }}>
                                         <Text style={{ fontSize: 18, fontWeight: '500' }}>{'孕婦衛教'}</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -398,11 +374,11 @@ const styles = StyleSheet.create({
         // padding: 16,
     },
     title: {
-        shadowColor:'gray',
+        shadowColor: 'gray',
         alignSelf: 'center',
         fontSize: 25,
         textShadowColor: 'black',
-        color:'white'
+        color: 'black'
     },
     text: {
         paddingLeft: 40,

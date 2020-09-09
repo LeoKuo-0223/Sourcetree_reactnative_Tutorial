@@ -1,5 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Text, FlatList, TouchableOpacity, Dimensions, Animated, Button, ImageBackground } from 'react-native';
+import {
+    View, StyleSheet, Text, FlatList, TouchableOpacity,
+    Dimensions, Animated, Button, ImageBackground, ScrollView
+} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import axios from 'axios';
 import { SocialIcon, Avatar, Badge, Icon, withBadge, Input } from 'react-native-elements'
@@ -43,136 +46,240 @@ export default class HealthyEdu extends React.Component {
     }
 
 
-    componentDidMount() {
-        this.getMultiple()
-
-
-
-        setTimeout(() => {
-            const { token, } = this.state;
-            const config = { headers: { 'Authorization': 'Token' + ' ' + token } };
-            // console.log(this.state.token)
-            // console.log(config);
-            axios.get(`http://192.168.137.1:8000/api/`, config)
-                .then(res => {
-                    const rawdata = res.data;
-                    console.log(rawdata)
-                    const url = rawdata.projectapp
-                    console.log(url)
-                    this.setState({
-                        url: url,
-                    })
-                    this.cleardata()
-                })
-                .catch((error) => console.error(error))
-                .finally(() => {
-                    const { url } = this.state;
-                    if (this.state.url !== '') {
-                        axios.get(url, config)
-                            .then(res => {
-                                const apidata = res.data;
-                                const usedata = apidata.slice(0, 7)
-                                console.log(usedata)
-                                this.setState({
-                                    apidata: usedata
-                                })
-                                // console.log(apidata)
-                                // console.log(apidata[0])
-                                // let contents = apidata[0]['content']
-                                // console.log(contents)
-
-                            })
-                            .catch((error) => console.error(error))
-
-                    }
-                })
-        }, 1000)
-
-
-    }
-
-    getItemLayout = (data, index) => (
-        { length: windowWidth, offset: windowWidth * index, index }
-    )
-    scrollToIndex = () => {
-        let randomIndex = Math.floor(Math.random(Date.now()) * this.state.apidata.length);
-        this.state.apidata.scrollToIndex({ animated: true, index: 3 });
-    }
-
-
-
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 0.4,/*  borderColor: 'pink', borderWidth: 5 */ }}>
-                    <FlatList
-                        data={this.state.apidata}
-                        ref={(ref) => { this.state.apidata = ref; }}
-                        pagingEnabled={true}
-                        keyExtractor={({ id }) => id}
-                        horizontal={true}
-                        getItemLayout={this.getItemLayout}
-                        // initialScrollIndex={0}
-                        indicatorStyle='black'
+            <ImageBackground
+                style={{ height: windowHeight, width: windowWidth,flex:1 }}
+                source={require('../image/health.jpg')}
+            >
+                <View style={{ flex: 1 }}>
+                    <View style={{flex:0.5}}>
 
-                        renderItem={({ item }) => (
-
-                            <View style={{ width: windowWidth, flex: 1 }}>
-                                <TouchableOpacity style={{ flex: 1 }}
-                                // onPress={()=> }
-                                >
-                                    <View style={{ flex: 0.8 }}>
-                                        <ImageBackground
-                                            style={styles.card}
-                                            source={require('../image/strongBaby.jpg')}
-                                        />
-                                    </View>
-                                    <View style={{ flex: 0.2 }}>
-
-
-                                        <View style={{
-                                            backgroundColor: "white", borderRadius: 10, padding: 25,
-                                            paddingVertical: 10, alignContent: 'center', justifyContent: 'center'
-                                        }}>
-                                            <Text style={{ color: "black", fontSize: 20, fontWeight: "bold", }}>{String(item.title)}</Text>
-                                        </View>
-
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-
-
-                        )}
-                    />
-                </View>
-                <View style={{ flex: 0.6, /* borderColor: 'pink', borderWidth: 1, */ }}>
-                    <View style={{ flex: 0.1/* , borderWidth: 2, borderColor: 'pink' */, alignSelf: 'center', justifyContent: 'center', marginTop: 5 }}>
-                        {/* <TouchableOpacity
-                            onPress={this.scrollToIndex}
-                        >
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
-                                <View>
+                    </View>
+                    <ScrollView>
+                        <View style={{ flex: 1 }}>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
                                     <Icon
-                                        name='bell-ring'
+                                        name='chart-line'
                                         type='material-community'
-                                        color='red'
-                                    // onPress={() => console.log('hello')}
+                                        size={30}
+                                        color='gray'
                                     />
                                 </View>
-                                <View>
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold', textDecorationLine: 'underline', textDecorationColor: 'black', }}> 今日小提醒 </Text>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'1' + '.'}</Text>
+
                                 </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>準媽媽的健康注意事項</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
+
                             </View>
-                        </TouchableOpacity> */}
-                    </View>
-                    <View style={{ flex: 0.9, }}>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='bell-alert-outline'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'2' + '.'}</Text>
 
-                    </View>
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>亮黃燈!注意危險徵兆</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
 
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='baby'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'3' + '.'}</Text>
 
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>新生兒哺育計畫</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
 
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='mother-nurse'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'4' + '.'}</Text>
+
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>當個舒適自在的準媽媽</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
+
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='allergy'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'5' + '.'}</Text>
+
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>趕走對胎兒的不良影響</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
+
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='head-check-outline'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'6' + '.'}</Text>
+
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>吃出健康</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
+
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        <View style={{
+                            backgroundColor: 'rgba(255,255,255,0.9)', flex: 0.2,
+                            borderRadius: 20, marginHorizontal: 16, marginTop: 10
+                        }}>
+                            {/* <TouchableOpacity onPress={()=>{}}> */}
+                            <View style={{ flex: 1, flexDirection: 'row' }}>
+                                <View style={{
+                                    flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5
+                                }}>
+                                    <Icon
+                                        name='account-heart'
+                                        type='material-community'
+                                        size={30}
+                                        color='gray'
+                                    />
+                                </View>
+                                <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
+                                    <Text style={{ fontSize: 18 }}>{'7' + '.'}</Text>
+
+                                </View>
+                                <View style={{
+                                    flex: 0.8, alignSelf: 'center',
+                                    padding: 10, marginVertical: 5
+                                }}>
+                                    <Text style={{ fontSize: 20, }}>準媽媽生活保健DIY</Text>
+                                    {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
+                                </View>
+
+                            </View>
+                            {/* </TouchableOpacity> */}
+                        </View>
+                        </View>
+                    </ScrollView>
                 </View>
-            </View>
+            </ImageBackground>
+
 
         )
     }

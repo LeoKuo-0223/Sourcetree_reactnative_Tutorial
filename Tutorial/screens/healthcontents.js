@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import {
     StyleSheet, View, Text, ScrollView, ActivityIndicator,
-    SafeAreaView, Image, FlatList, ImageBackground
+    SafeAreaView, Image, FlatList, ImageBackground, Dimensions
 } from 'react-native'
 import axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 export default class Healthcontents extends React.Component {
     constructor(props) {
         super(props);
@@ -104,27 +107,40 @@ export default class Healthcontents extends React.Component {
         } else {
             return (
                 // <ScrollView style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 0.5 }}>
-                        <View style={{ flex: 0.3, padding: 15, }}>
-                            <Text style={{ fontSize: 28 }}>{title}</Text>
-                        </View>
-                        <View style={{ flex: 0.7, marginTop: 10 }}>
-                            <ImageBackground
-                                style={styles.card}
-                                source={require('../image/strongBaby.jpg')}
-                            />
-                        </View>
-                    </View>
-                    <View style={{ flex: 0.5, marginTop:20}}>
-                        <ScrollView>
-                            <View style={{ flex: 0.5, padding: 10 }}>
-                                <Text style={{ fontSize: 20 }}>{contents}</Text>
+                <ImageBackground
+                    style={{ width: windowWidth, height: windowHeight,flex:1 }}
+                    source={require('../image/beach.jpg')}
+                >
+                    <View style={{ flex: 1 }}>
+                        <View style={{ flex: 0.5 }}>
+                            <View style={{
+                                flex: 0.2, padding: 15, backgroundColor: 'rgba(255,255,255,0.7)',
+                                borderRadius: 15,
+                            }}>
+                                <Text style={{ fontSize: 28, justifyContent: 'center' }}>{title}</Text>
                             </View>
-                        </ScrollView>
+                            <View style={{ flex: 0.8, marginTop: 10 }}>
+                                <ImageBackground
+                                    style={styles.card}
+                                    source={require('../image/strongBaby.jpg')}
+                                />
+                            </View>
+                        </View>
+                        <View style={{
+                            flex: 0.5, marginTop: 10, padding: 10,
+                            backgroundColor: 'rgba(255,255,255,0.7)', borderRadius: 20
+                        }}>
+                            
+                                <ScrollView>
+                                    <View style={{ flex: 0.5, padding: 10 }}>
+                                        <Text style={{ fontSize: 20 }}>{contents}</Text>
+                                    </View>
+                                </ScrollView>
+                            
+                        </View>
                     </View>
+                </ImageBackground>
 
-                </View>
                 // </ScrollView>
 
             )

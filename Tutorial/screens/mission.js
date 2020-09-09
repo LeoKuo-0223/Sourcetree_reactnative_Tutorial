@@ -120,7 +120,10 @@ export default class HealthyEdu extends React.Component {
 
                         <View style={{ flex: 0.5,/*  borderColor: 'pink', borderWidth: 5 */ }}>
                             {/* <ScrollView> */}
-                            <View style={{ backgroundColor: '#FFECF5', padding: 10, borderRadius: 15, marginTop: 5, marginHorizontal: 5 }}>
+                            <View style={{
+                                backgroundColor: '#FFECF5', padding: 10, borderBottomEndRadius: 30,
+                                borderBottomLeftRadius: 30
+                            }}>
                                 <Text style={{ fontSize: 25, alignSelf: 'center', fontWeight: 'bold' }}>老婆大人的任務清單</Text>
                             </View>
                             <FlatList
@@ -177,7 +180,10 @@ export default class HealthyEdu extends React.Component {
 
                         </View>
                         <View style={{ flex: 0.5, /* borderColor: 'pink', borderWidth: 1, */ }}>
-                            <View style={{ backgroundColor: '#D7FFEE', padding: 10, borderRadius: 15, marginTop: 5, marginHorizontal: 5 }}>
+                            <View style={{
+                                backgroundColor: 'rgba(224,224,224,1)', padding: 10,
+                               borderBottomEndRadius:30,borderBottomLeftRadius:30
+                            }}>
                                 <Text style={{ fontSize: 25, alignSelf: 'center', fontWeight: 'bold' }}>推薦任務</Text>
                             </View>
                             <ScrollView>
@@ -236,14 +242,14 @@ export default class HealthyEdu extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
-                                            <Text style={{ fontSize: 18 }}>{'1' + '.'}</Text>
+                                            <Text style={{ fontSize: 18 }}>{'2' + '.'}</Text>
 
                                         </View>
                                         <View style={{
                                             flex: 0.7, alignSelf: 'center',
                                             padding: 10, marginVertical: 5
                                         }}>
-                                            <Text style={{ fontSize: 20, }}>睡前放一首 德布西的月光 讓寶寶跟媽媽好好放鬆一下吧 !</Text>
+                                            <Text style={{ fontSize: 20, }}>用一張張照片記錄下媽媽懷孕的過程</Text>
                                             {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
                                         </View>
                                         <View style={{ flex: 0.1, paddingRight: 5, alignSelf: 'center' }}>
@@ -274,14 +280,14 @@ export default class HealthyEdu extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
-                                            <Text style={{ fontSize: 18 }}>{'1' + '.'}</Text>
+                                            <Text style={{ fontSize: 18 }}>{'3' + '.'}</Text>
 
                                         </View>
                                         <View style={{
                                             flex: 0.7, alignSelf: 'center',
                                             padding: 10, marginVertical: 5
                                         }}>
-                                            <Text style={{ fontSize: 20, }}>睡前放一首 德布西的月光 讓寶寶跟媽媽好好放鬆一下吧 !</Text>
+                                            <Text style={{ fontSize: 20, }}>準備熱水熱毛巾溫暖媽媽冰冷的四肢和心</Text>
                                             {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
                                         </View>
                                         <View style={{ flex: 0.1, paddingRight: 5, alignSelf: 'center' }}>
@@ -312,14 +318,14 @@ export default class HealthyEdu extends React.Component {
                                             />
                                         </View>
                                         <View style={{ flex: 0.1, marginTop: 5, alignSelf: 'center', paddingLeft: 5 }}>
-                                            <Text style={{ fontSize: 18 }}>{'1' + '.'}</Text>
+                                            <Text style={{ fontSize: 18 }}>{'4' + '.'}</Text>
 
                                         </View>
                                         <View style={{
                                             flex: 0.7, alignSelf: 'center',
                                             padding: 10, marginVertical: 5
                                         }}>
-                                            <Text style={{ fontSize: 20, }}>睡前放一首 德布西的月光 讓寶寶跟媽媽好好放鬆一下吧 !</Text>
+                                            <Text style={{ fontSize: 20, }}>帶媽媽出門走走吧 !</Text>
                                             {/* <Text style={{ justifyContent: 'space-around' }}>{this.gettime(item.editTime)}</Text> */}
                                         </View>
                                         <View style={{ flex: 0.1, paddingRight: 5, alignSelf: 'center' }}>

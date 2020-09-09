@@ -108,7 +108,7 @@ export default class Login extends Component {
                     onPress={() => { Keyboard.dismiss() }}>
 
                     <ImageBackground
-                        style={{ height: windowHeight, width: windowWidth,flex:1 }}
+                        style={{ height: windowHeight, width: windowWidth, flex: 1 }}
                         source={require('../image/family.jpg')}
                     >
 
@@ -118,15 +118,41 @@ export default class Login extends Component {
                                 {/* <View style={{ flex: 0.4, alignSelf: 'center' }}>
                                     <Image source={require('../image/cooking.png')} style={styles.image} />
                                 </View> */}
-                                <View style={{ flex: 0.6, alignContent: 'center', justifyContent: 'center' }}>
-                                    <Text style={styles.text}></Text>
+                                <View style={{ flex: 0.6 }}>
+                                    <View style={{
+                                        flex: 0.15, alignContent: 'center', flexDirection: 'row',
+                                        justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.7)',
+                                        borderBottomEndRadius: 60, marginEnd: 40, elevation: 20
+                                    }}>
+                                        <View style={{
+                                             flex: 0.1,
+                                        }}>
+                                            <Image
+                                                style={{ width: 125, height: 125 ,marginLeft:5}}
+                                                source={require('../image/badge_white.png')}
+                                            />
+                                        </View>
+                                        <View style={{
+                                            alignContent: 'center',flex:0.9,
+                                            justifyContent: 'center', padding: 10
+                                        }}>
+                                            <Text style={styles.text}>得心孕手</Text>
+                                        </View>
+
+                                    </View>
+                                    {/* <View style={{ flex: 0.2 }}>
+
+                                    </View> */}
+                                    <View style={{ flex: 0.85 }}>
+
+                                    </View>
                                 </View>
 
                                 <View style={{
                                     marginLeft: 40, marginRight: 40, flex: 0.2, borderRadius: 20,
-                                    backgroundColor: "rgba(255,255,255, 0.7)",
+                                    backgroundColor: "rgba(255,255,255, 0.7)", elevation: 50
                                 }}>
-                                    <View style={{ flex: 0.5, justifyContent:'center',paddingTop:20}}>
+                                    <View style={{ flex: 0.5, justifyContent: 'center', paddingTop: 20 }}>
 
                                         <View>
                                             <Input
@@ -145,7 +171,7 @@ export default class Login extends Component {
 
                                     </View>
 
-                                    <View style={{ flex: 0.5,justifyContent:'center' }}>
+                                    <View style={{ flex: 0.5, justifyContent: 'center' }}>
                                         <View>
                                             <Input
                                                 secureTextEntry={this.state.passwordvisible}
@@ -192,7 +218,7 @@ export default class Login extends Component {
                                     </View>
                                 </View>
                                 <View style={{ flex: 0.2, }}>
-                                    <View style={{ marginRight: 100, marginLeft: 100, borderRadius: 20, flex: 1, marginVertical: 40}}>
+                                    <View style={{ marginRight: 100, marginLeft: 100, borderRadius: 20, flex: 1, marginVertical: 40, }}>
                                         <Button
                                             title='登入'
                                             onPress={() => this.getAuthentication()}
@@ -264,7 +290,9 @@ const styles = StyleSheet.create({
 
     text: {
         alignSelf: 'center',
-        fontSize: 25
+        fontSize: 30,
+
+
     },
 
 });
